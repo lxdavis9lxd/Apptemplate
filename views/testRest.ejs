@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>REST API Test</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>REST API Test</h1>
+
+    <h2>GET Request</h2>
+    <form id="getForm">
+        <label for="getField">Field:</label>
+        <input type="text" id="getField" name="field" required>
+        <button type="submit">GET</button>
+    </form>
+    <div id="getResponse"></div>
+
+    <h2>POST Request</h2>
+    <form id="postForm">
+        <label for="postField">Field:</label>
+        <input type="text" id="postField" name="field" required>
+        <button type="submit">POST</button>
+    </form>
+    <div id="postResponse"></div>
+
+    <h2>PUT Request</h2>
+    <form id="putForm">
+        <label for="putField">Field:</label>
+        <input type="text" id="putField" name="field" required>
+        <button type="submit">PUT</button>
+    </form>
+    <div id="putResponse"></div>
+
+    <h2>PATCH Request</h2>
+    <form id="patchForm">
+        <label for="patchField">Field:</label>
+        <input type="text" id="patchField" name="field" required>
+        <button type="submit">PATCH</button>
+    </form>
+    <div id="patchResponse"></div>
+
+    <h2>DELETE Request</h2>
+    <form id="deleteForm">
+        <label for="deleteField">Field:</label>
+        <input type="text" id="deleteField" name="field" required>
+        <button type="submit">DELETE</button>
+    </form>
+    <div id="deleteResponse"></div>
+
+    <script>
+        // Function to handle form submissions
+        function handleFormSubmit(event, method) {
+            event.preventDefault();
+            const field = event.target.field.value;
+            const url = `/api/your-endpoint/${field}`;
+
+            $.ajax({
+                url: url,
+                method: method,
+                success: function(response) {
+                    const responseDiv = $(`#${method.toLowerCase()}Response`);
+                    responseDiv.text(`Status: ${response.status}`);
+                },
+                error: function(xhr, status, error) {
+                    const responseDiv = $(`#${method.toLowerCase()}Response`);
+                    responseDiv.text(`Error: ${error}`);
+                }
+            });
+        }
+
+        // Attach event listeners to the forms
+        $('#getForm').submit(function(event) {
+            handleFormSubmit(event, 'GET');
+        });
+
+        $('#postForm').submit(function(event) {
+            handleFormSubmit(event, 'POST');
+        });
+
+        $('#putForm').submit(function(event) {
+            handleFormSubmit(event, 'PUT');
+        });
+
+        $('#patchForm').submit(function(event) {
+            handleFormSubmit(event, 'PATCH');
+        });
+
+        $('#deleteForm').submit(function(event) {
+            handleFormSubmit(event, 'DELETE');
+        });
+    </script>
+</body>
+</html>
