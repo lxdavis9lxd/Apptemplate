@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/bootstrap.ejs %>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action="/get" method="GET">
+      <label for="url">URL:</label>
+      <input type="text" id="url" name="url" required minlength="1" size="150">
+      <br>
+      <label for="param">Param:</label>
+      <input type="text" id="param" name="param" required minlength="1" size="50">
+      <br>
+      <label for="bearer-token">Bearer Token:</label>
+      <input type="text" id="bearer-token" name="bearer-token" required minlength="1" size="50">
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

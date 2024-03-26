@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/bootstrap.ejs %>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <body>
+  <form action="/delete" method="POST">
+    <label for="url">URL:</label>
+    <input type="text" id="url" name="url" required><br><br>
+    
+    <label for="bearer-token">Bearer Token:</label>
+    <input type="text" id="bearer-token" name="bearer-token" required><br><br>
+    
+    <label for="param">Parameter:</label>
+    <input type="text" id="param" name="param" required><br><br>
+    
+    <input type="submit" value="Delete">
+  </form>
+  </body> 
+</html>
